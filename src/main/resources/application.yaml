@@ -1,0 +1,59 @@
+#spring:
+#  application:
+#    name: BackendApp
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/backend
+#    username: postgres
+#    password: root
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#secreteJwtString: dennis123456789dennis123456789dennis123456789
+
+
+#spring:
+#  application:
+#    name: todo-app
+#  datasource:
+#    url: jdbc:postgresql://dpg-d5egcnffte5s73aic2s0-a.oregon-postgres.render.com:5432/mydb_abfk
+#    password: ms3umXD5Pm6WStCvkUTpyrFx4eRe0L69
+#    username: piyush
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        format_sql: true
+#    show-sql: true
+#secreteJwtString: dennis123456789dennis123456789dennis123456789
+
+
+
+
+spring:
+  application:
+    name: BackendApp
+  datasource:
+    url: jdbc:postgresql://dpg-d5ehgjtactks73c83a50-a.singapore-postgres.render.com:5432/mydb_fh2p
+    username: piyush
+    password: zgSa8o9jMvRintle8I4monBLedp1Lnee
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+secreteJwtString: dennis123456789dennis123456789dennis123456789

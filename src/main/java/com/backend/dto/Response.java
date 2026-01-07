@@ -1,0 +1,38 @@
+package com.backend.dto;
+
+import com.backend.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Response {
+
+    //generic
+    private int status;
+    private String message;
+
+    //for login
+    private String token;
+    private UserRole role;
+    private Boolean isActive;
+    private String expirationTime;
+    private String userName;
+    private String validToken;
+    //user data output
+    private UserDTO user;
+    private List<UserDTO> users;
+
+    private final LocalDateTime timestamp = LocalDateTime.now();
+
+
+}
