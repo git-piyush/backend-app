@@ -30,13 +30,13 @@ public class VehicleController {
     }
 
     // ✅ Get All Vehicles
-    @GetMapping
+    @GetMapping("/all-vehicle")
     public ResponseEntity<List<Vehicle>> getAllVehicles() {
         return ResponseEntity.ok(vehicleRepository.findAll());
     }
 
     // ✅ Get Vehicle by DB ID
-    @GetMapping("/{id}")
+    @GetMapping("/get-vehicle/{id}")
     public ResponseEntity<Vehicle> getVehicleById(@PathVariable Long id) {
         Vehicle vehicle = vehicleRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Vehicle not found with ID: " + id));
