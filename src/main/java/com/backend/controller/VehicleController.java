@@ -75,11 +75,17 @@ public class VehicleController {
 
     // ✅ Delete Vehicle
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteVehicle(@PathVariable Long id) {
-        if (!vehicleRepository.existsById(id)) {
-            throw new RuntimeException("Vehicle not found with ID: " + id);
+    public ResponseEntity deleteVehicle(@PathVariable Long id) {
+        try{
+            if (!vehicleRepository.existsById(id)) {
+                throw new RuntimeException("Vehicle not found with ID: " + id);
+            }
+            vehicleRepository.deleteById(id);
+        }catch(Exception e){
+            Response res = Response.builder().status(200).message("Some Error Occured.").build();
+            return ResponseEntity.ok(res);
         }
-        vehicleRepository.deleteById(id);
-        return ResponseEntity.ok("Vehicle deleted successfully");
+        Response res = Response.builder().status(200).message("Vehicle deleted successfully").build();
+        return ResponseEntity.ok(res);
     }
 }
