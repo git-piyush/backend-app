@@ -1,5 +1,6 @@
 package com.backend.dto;
 
+import com.backend.entity.Event;
 import com.backend.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -35,4 +36,8 @@ public class Response {
     private final LocalDateTime timestamp = LocalDateTime.now();
 
     private List<VehicleDTO> vehicleDTOS;
+
+    private List<Event> eventList;
+
+    private DashboardResponse dashboardResponse;
 }

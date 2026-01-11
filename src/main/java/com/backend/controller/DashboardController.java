@@ -21,7 +21,12 @@ public class DashboardController {
     public ResponseEntity getDashBoardDate(){
         try{
             DashboardResponse dashboardResponse = dashboardService.findDashboardData();
-            return ResponseEntity.ok(dashboardResponse);
+            Response res = Response.builder()
+                    .status(200)
+                    .message("Data Retrieved.")
+                    .dashboardResponse(dashboardResponse)
+                    .build();
+            return ResponseEntity.ok(res);
         }catch(Exception e){
             Response res = Response.builder().status(200).message("Some Error Occured.").build();
             return ResponseEntity.ok(res);
