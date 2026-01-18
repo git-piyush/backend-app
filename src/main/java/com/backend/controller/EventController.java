@@ -73,14 +73,16 @@ public class EventController {
     // GET BY DEPARTMENT
     @GetMapping("/department/{dept}")
     public ResponseEntity<List<Event>> byDept(@PathVariable("dept") String department) {
-        return ResponseEntity.ok(eventService.getByDepartment(department));
+        //return ResponseEntity.ok(eventService.getByDepartment(department));
+        return null;
     }
 
     // GET BY BOOKING STATUS
     @GetMapping("/booking-status/{status}")
     public ResponseEntity<List<Event>> getByBookingStatus(
             @PathVariable BookingStatus status) {
-        return ResponseEntity.ok(eventService.getByBookingStatus(status));
+        //return ResponseEntity.ok(eventService.getByBookingStatus(status));
+        return null;
     }
 
 }

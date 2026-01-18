@@ -17,9 +17,9 @@ public interface EventService {
 
     void deleteEvent(Long id);
 
-    List<Event> getByDepartment(String department);
+    //List<Event> getByDepartment(String department);
 
-    List<Event> getByBookingStatus(BookingStatus status);
+    //List<Event> getByBookingStatus(BookingStatus status);
 
-    List<Event> getByCreatedBy(String title);
+    //List<Event> getByCreatedBy(String title);
 }

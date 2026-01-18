@@ -2,7 +2,6 @@ package com.backend.service.serviceImpl;
 
 import com.backend.entity.Event;
 import com.backend.enums.BookingStatus;
-import com.backend.enums.Category;
 import com.backend.repositories.EventRepository;
 import com.backend.service.EventService;
 import com.backend.utils.UserUtility;
@@ -24,14 +23,14 @@ public class EventServiceImpl implements EventService {
     public Event updateEvent(Long id, Event event) {
         Event ex = eventRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
         // update fields
-        if(event.getBookingStatus()!=null && ex.getBookingStatus()!=null && (!event.getBookingStatus().equals(ex.getBookingStatus()))){
-            ex.setBookingStatus(event.getBookingStatus());
+        if(event.getRfcBookingStatus()!=null && ex.getRfcBookingStatus()!=null && (!event.getRfcBookingStatus().equals(ex.getRfcBookingStatus()))){
+            ex.setRfcBookingStatus(event.getRfcBookingStatus());
         }
-        if(event.getCategory()!=null && ex.getCategory()!=null && (!event.getCategory().equals(ex.getCategory()))){
-            ex.setCategory(event.getCategory());
-        }
-        if(event.getDepartment()!=null && ex.getDepartment()!=null && (!event.getDepartment().equals(ex.getDepartment()))){
-            ex.setDepartment(event.getDepartment());
+//        if(event.getCategory()!=null && ex.getCategory()!=null && (!event.getCategory().equals(ex.getCategory()))){
+//            ex.setCategory(event.getCategory());
+//        }
+        if(event.getRfcDepartment()!=null && ex.getRfcDepartment()!=null && (!event.getRfcDepartment().equals(ex.getRfcDepartment()))){
+            ex.setRfcDepartment(event.getRfcDepartment());
         }
         if(event.getDescription()!=null && ex.getDescription()!=null && (!event.getDescription().equalsIgnoreCase(ex.getDescription()))){
             ex.setTitle(event.getDescription());
@@ -45,11 +44,11 @@ public class EventServiceImpl implements EventService {
         if(event.getEndDate()!=null && ex.getEndDate()!=null && (!event.getEndDate().equals(ex.getEndDate()))){
             ex.setEndDate(event.getEndDate());
         }
-        if(event.getEventType()!=null && ex.getEventType()!=null && (!event.getEventType().equals(ex.getEventType()))){
-            ex.setEventType(event.getEventType());
+        if(event.getRfcEventType()!=null && ex.getRfcEventType()!=null && (!event.getRfcEventType().equals(ex.getRfcEventType()))){
+            ex.setRfcEventType(event.getRfcEventType());
         }
-        if(event.getVehiclePriority()!=null && ex.getVehiclePriority()!=null && (!event.getVehiclePriority().equals(ex.getVehiclePriority()))){
-            ex.setVehiclePriority(event.getVehiclePriority());
+        if(event.getRfcVehiclePriority()!=null && ex.getRfcVehiclePriority()!=null && (!event.getRfcVehiclePriority().equals(ex.getRfcVehiclePriority()))){
+            ex.setRfcVehiclePriority(event.getRfcVehiclePriority());
         }
         if(event.getTitle()!=null && ex.getTitle()!=null && (!event.getTitle().equalsIgnoreCase(ex.getTitle()))){
             ex.setTitle(event.getTitle());
@@ -91,21 +90,25 @@ public class EventServiceImpl implements EventService {
         eventRepository.deleteById(id);
     }
 
-    @Override
+    //@Override
     public List<Event> getByDepartment(String department) {
-        return eventRepository.findByDepartment(department);
+
+        //return eventRepository.findByDepartment(department);
+        return null;
     }
 
 
-    @Override
+   // @Override
     public List<Event> getByBookingStatus(BookingStatus bookingStatus) {
-        return eventRepository.findByBookingStatus(bookingStatus);
+        //return eventRepository.findByBookingStatus(bookingStatus);
+        return null;
     }
 
 
-    @Override
+    //@Override
     public List<Event> getByCreatedBy(String title) {
-        return eventRepository.findByCreatedBy(title);
+       // return eventRepository.findByCreatedBy(title);
+        return null;
     }
 }
 

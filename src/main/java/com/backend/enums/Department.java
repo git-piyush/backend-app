@@ -1,9 +1,10 @@
 package com.backend.enums;
 
 public enum Department {
-    ADMIN,
-    TRANSPORT,
-    SALES,
-    HR,
-    FINANCE
+    RFADM,  //ADMIN,
+    RFCUS,  //CUSTOMER,
+    RFSAL,  //SALES
+    RFHR,    //HR
+    RFFIN,  //FINANCE
+    RFGEN,  //GENERAL
 }

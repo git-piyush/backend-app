@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Immutable;
+import org.hibernate.annotations.Subselect;
 
 @Entity
 @Table(name = "vw_dashboard")
@@ -14,6 +15,7 @@ import org.hibernate.annotations.Immutable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Immutable
+@Subselect("SELECT * FROM vw_dashboard")
 public class Dashboard {
 
     @Id

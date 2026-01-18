@@ -1,9 +1,9 @@
 package com.backend.enums;
 
 public enum EventType {
-    MEETING,
-    DEADLINE,
-    TASK,
-    HOLIDAY,
-    GENERAL
+    RFMET,  //MEETING
+    RFDED,  //DEADLINE
+    RFTSK,  //TASK
+    RFHOL,  //HOLIDAY,
+    RFGEN,  //GENERAL
 }

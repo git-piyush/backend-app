@@ -1,4 +1,5 @@
 package com.backend.entity;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,43 +13,28 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import java.util.Date;
 
 @Entity
-@Table(name = "tbl_event")
+@Table(name = "tbl_reference_code")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Event {
+public class RefCode {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
+    private String category;
 
-    @Column(length = 2000)
-    private String description;
+    @Column(name="REF_CODE", unique = true)
+    private String refCode;
 
-    private String rfcEventType;
+    private Long refOrder;
 
-    private String rfcVehiclePriority;
+    @Column(name="REF_CODE_LONG_NAME")
+    private String longName;
 
-    private String rfcEventProgress;
-
-    private String rfcBookingStatus;
-
-    private String rfcDepartment;
-
-    private boolean privateEvent;
-
-    private boolean departmentEvent;
-
-    private boolean vehicleUpdate;
-
-    private Date startDate;
-
-    private Date endDate;
-
-    private Date dueDate;
+    private String active;
 
     private Date createdDate;
 
@@ -57,11 +43,6 @@ public class Event {
     private Date modifiedDate;
 
     private String modifiedBy;
-
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 
     @PreUpdate
     @PrePersist
@@ -80,4 +61,5 @@ public class Event {
             this.createdBy = userName;
         }
     }
+
 }

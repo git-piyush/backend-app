@@ -1,21 +1,21 @@
-#spring:
-#  application:
-#    name: BackendApp
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/backend
-#    username: postgres
-#    password: root
-#    driver-class-name: org.postgresql.Driver
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    show-sql: true
-#    properties:
-#      hibernate:
-#        format_sql: true
-#    database: postgresql
-#    database-platform: org.hibernate.dialect.PostgreSQLDialect
-#secreteJwtString: dennis123456789dennis123456789dennis123456789
+spring:
+  application:
+    name: BackendApp
+  datasource:
+    url: jdbc:postgresql://localhost:5432/backend
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+secreteJwtString: dennis123456789dennis123456789dennis123456789
 
 
 #spring:
@@ -39,21 +39,21 @@
 
 
 
-spring:
-  application:
-    name: BackendApp
-  datasource:
-    url: jdbc:postgresql://dpg-d5ehgjtactks73c83a50-a.singapore-postgres.render.com:5432/mydb_fh2p
-    username: piyush
-    password: zgSa8o9jMvRintle8I4monBLedp1Lnee
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-secreteJwtString: dennis123456789dennis123456789dennis123456789
+#spring:
+#  application:
+#    name: BackendApp
+#  datasource:
+#    url: jdbc:postgresql://dpg-d5ehgjtactks73c83a50-a.singapore-postgres.render.com:5432/mydb_fh2p
+#    username: piyush
+#    password: zgSa8o9jMvRintle8I4monBLedp1Lnee
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#secreteJwtString: dennis123456789dennis123456789dennis123456789

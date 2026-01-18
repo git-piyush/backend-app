@@ -1,6 +1,7 @@
 package com.backend.dto;
 
 import com.backend.entity.Event;
+import com.backend.entity.RefCode;
 import com.backend.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @AllArgsConstructor
@@ -40,4 +42,10 @@ public class Response {
     private List<Event> eventList;
 
     private DashboardResponse dashboardResponse;
+
+    private RefCode refCode;
+
+    private Map<String, String> refCodeMap;
+
+    private Map<String, Map<String,String>> refCodeMap1;
 }

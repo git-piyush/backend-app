@@ -9,10 +9,10 @@ import java.util.List;
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-    List<Event> findByDepartment(String department);
+    //List<Event> findByDepartment(String department);
 
-    List<Event> findByBookingStatus(BookingStatus bookingStatus);
+   // List<Event> findByBookingStatus(BookingStatus bookingStatus);
 
-    List<Event> findByCreatedBy(String title);
+   // List<Event> findByCreatedBy(String title);
     // add other queries as needed
 }
