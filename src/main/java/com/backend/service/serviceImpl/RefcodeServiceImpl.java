@@ -5,6 +5,10 @@ import com.backend.exceptions.NotFoundException;
 import com.backend.repositories.RefcodeRepository;
 import com.backend.service.RefcodeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +29,7 @@ public class RefcodeServiceImpl implements RefcodeService {
     @Override
     public RefCode getRefCodeById(Long id) {
         RefCode refCode = refcodeRepository.findById(id)
-                .orElseThrow(()-> new NotFoundException("RefCode Not Found"));
+                .orElseThrow(() -> new NotFoundException("RefCode Not Found"));
         return refCode;
     }
 
@@ -37,9 +41,9 @@ public class RefcodeServiceImpl implements RefcodeService {
     @Override
     public void deleteRefcode(Long id) {
         RefCode refCode = refcodeRepository.findById(id)
-                .orElseThrow(()-> new NotFoundException("RefCode Not Found"));
+                .orElseThrow(() -> new NotFoundException("RefCode Not Found"));
 
-        if(refCode!=null){
+        if (refCode != null) {
             refcodeRepository.deleteById(id);
         }
     }
@@ -60,7 +64,7 @@ public class RefcodeServiceImpl implements RefcodeService {
     @Override
     public Map<String, Map<String, String>> getAllRefcode() {
 
-        List<RefCode> refCodeList =  refcodeRepository.findAll();
+        List<RefCode> refCodeList = refcodeRepository.findAll();
 
         Map<String, Map<String, String>> map1 = refCodeList.stream()
                 .collect(Collectors.groupingBy(
@@ -72,5 +76,16 @@ public class RefcodeServiceImpl implements RefcodeService {
                 ));
 
         return map1;
+    }
+
+    @Override
+    public Page<RefCode> getRefCodes(int page, int size, String sortBy, String direction) {
+        Sort sort = direction.equalsIgnoreCase("asc")
+                ? Sort.by(sortBy).ascending()
+                : Sort.by(sortBy).descending();
+
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return refcodeRepository.findAll(pageable);
+
     }
 }

@@ -6,6 +6,7 @@ import com.backend.entity.RefCode;
 import com.backend.service.RefcodeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -113,6 +114,17 @@ public class RefCodeController {
                 .message("RefCode successfully.")
                 .build();
         return ResponseEntity.ok(res);
+    }
+
+
+    @GetMapping("/refcode-list")
+    public Page<RefCode> getRefCodes(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "5") int size,
+            @RequestParam(value = "sortBy", defaultValue = "refCode") String sortBy,
+            @RequestParam(value = "direction", defaultValue = "asc") String direction) {
+
+        return refcodeService.getRefCodes(page, size, sortBy, direction);
     }
 
 

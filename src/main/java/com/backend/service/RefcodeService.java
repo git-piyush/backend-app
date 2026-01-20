@@ -1,6 +1,7 @@
 package com.backend.service;
 
 import com.backend.entity.RefCode;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -19,4 +20,7 @@ public interface RefcodeService {
     Map<String, String> findRefCodeByCategory(String refCodeCat);
 
     Map<String, Map<String, String>> getAllRefcode();
-}
+
+    Page<RefCode> getRefCodes(int page, int size, String sortBy, String direction);
+
+    }
