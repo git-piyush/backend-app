@@ -1,8 +1,11 @@
 package com.backend.controller;
 
+import com.backend.constants.AppConstants;
 import com.backend.dto.Response;
 import com.backend.entity.Event;
 import com.backend.entity.RefCode;
+import com.backend.exceptions.DuplicateRecordException;
+import com.backend.exceptions.UserExistException;
 import com.backend.service.RefcodeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -23,6 +27,13 @@ public class RefCodeController {
 
     @PostMapping("/create")
     public ResponseEntity create(@RequestBody RefCode refCode) {
+
+        RefCode dbRefCode = refcodeService.findByRefCode(refCode.getRefCode());
+
+        if(dbRefCode!=null){
+            throw new DuplicateRecordException("Refcode already present");
+        }
+
         try{
             RefCode refCode1 = refcodeService.createRefcode(refCode);
         }catch(Exception e){
@@ -97,6 +108,23 @@ public class RefCodeController {
         return ResponseEntity.ok(res);
     }
 
+    @GetMapping("/getAllRefcodeCategoryList")
+    public ResponseEntity getAllRefcodeCategoryList() {
+        List<String> refCodeList = null;
+        try{
+            refCodeList = refcodeService.getAllRefcodeCategoryList();
+        }catch(Exception e){
+            Response res = Response.builder().status(200).message("Some Error Occured.").build();
+            return ResponseEntity.ok(res);
+        }
+        Response res = Response.builder()
+                .status(200)
+                .message("Recode retrieved successfully.")
+                .refCodeList(refCodeList)
+                .build();
+        return ResponseEntity.ok(res);
+    }
+
     @DeleteMapping("/get/{id}")
     public ResponseEntity deleteRefcode(@PathVariable Long id) {
         RefCode refCode = null;
@@ -119,12 +147,12 @@ public class RefCodeController {
 
     @GetMapping("/refcode-list")
     public Page<RefCode> getRefCodes(
-            @RequestParam(value = "page", defaultValue = "0") int page,
-            @RequestParam(value = "size", defaultValue = "5") int size,
-            @RequestParam(value = "sortBy", defaultValue = "refCode") String sortBy,
-            @RequestParam(value = "direction", defaultValue = "asc") String direction) {
+            @RequestParam(value = "page", defaultValue = AppConstants.DEFAULT_PAGE) int page,
+            @RequestParam(value = "size", defaultValue = AppConstants.DEFAULT_PAGE_SIZE) int size,
+            @RequestParam(value = "sortBy", defaultValue = AppConstants.DEFAULT_SORT_BY) String orderBy,
+            @RequestParam(value = "direction", defaultValue = AppConstants.DEFAULT_ORDER) String order) {
 
-        return refcodeService.getRefCodes(page, size, sortBy, direction);
+        return refcodeService.getRefCodes(page, size, orderBy, order);
     }
 
 

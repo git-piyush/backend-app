@@ -9,6 +9,8 @@ import java.util.List;
 @Repository
 public interface RefcodeRepository extends JpaRepository<RefCode, Long> {
 
+    RefCode findByRefCode(String refCode);
+
     List<RefCode> findByCategory(String category);
 
 }

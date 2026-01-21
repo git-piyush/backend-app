@@ -88,4 +88,20 @@ public class RefcodeServiceImpl implements RefcodeService {
         return refcodeRepository.findAll(pageable);
 
     }
+
+    @Override
+    public List getAllRefcodeCategoryList() {
+
+        List<String> categoryList = refcodeRepository.findAll()
+                .stream()
+                .map(refcode -> refcode.getCategory())  // transform each refcode to its category
+                .collect(Collectors.toList());
+        return categoryList;
+    }
+
+    @Override
+    public RefCode findByRefCode(String refCode) {
+        RefCode dbRefCode = refcodeRepository.findByRefCode(refCode);
+        return dbRefCode;
+    }
 }

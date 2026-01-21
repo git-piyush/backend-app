@@ -48,4 +48,6 @@ public class Response {
     private Map<String, String> refCodeMap;
 
     private Map<String, Map<String,String>> refCodeMap1;
+
+    private List<String> refCodeList;
 }

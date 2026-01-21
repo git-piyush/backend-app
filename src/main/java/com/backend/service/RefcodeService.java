@@ -4,6 +4,7 @@ import com.backend.entity.RefCode;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -23,4 +24,7 @@ public interface RefcodeService {
 
     Page<RefCode> getRefCodes(int page, int size, String sortBy, String direction);
 
-    }
+    List getAllRefcodeCategoryList();
+
+    RefCode findByRefCode(String refCode);
+}
