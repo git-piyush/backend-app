@@ -28,15 +28,6 @@ public class RefCodeController {
     @PostMapping("/create")
     public ResponseEntity create(@RequestBody RefCode refCode) {
 
-        if(refCode.getCategory()!=null && refCode.getRefCode()==null){
-            //
-        }else{
-            RefCode dbRefCode = refcodeService.findByRefCode(refCode.getRefCode());
-
-            if(dbRefCode!=null){
-                throw new DuplicateRecordException("Refcode already present");
-            }
-        }
         try{
             RefCode refCode1 = refcodeService.createRefcode(refCode);
         }catch(Exception e){
