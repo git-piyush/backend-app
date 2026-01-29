@@ -28,6 +28,13 @@ public class RefCodeController {
     @PostMapping("/create")
     public ResponseEntity create(@RequestBody RefCode refCode) {
 
+        if(refCode!=null && refCode.getId()==null && refCode.getRefCode()!=null) {
+            RefCode dbRefCode = refcodeService.findByRefCode(refCode.getRefCode());
+            if(dbRefCode!=null){
+                Response res = Response.builder().status(200).message("RefCode Already exist.").build();
+                return ResponseEntity.ok(res);
+            }
+        }
         try{
             RefCode refCode1 = refcodeService.createRefcode(refCode);
         }catch(Exception e){
