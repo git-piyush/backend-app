@@ -126,7 +126,7 @@ public class RefCodeController {
         return ResponseEntity.ok(res);
     }
 
-    @DeleteMapping("/get/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteRefcode(@PathVariable Long id) {
         RefCode refCode = null;
         try{
@@ -140,7 +140,7 @@ public class RefCodeController {
         }
         Response res = Response.builder()
                 .status(200)
-                .message("RefCode successfully.")
+                .message("RefCode deleted successfully.")
                 .build();
         return ResponseEntity.ok(res);
     }
