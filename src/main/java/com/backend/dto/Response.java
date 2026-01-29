@@ -2,6 +2,7 @@ package com.backend.dto;
 
 import com.backend.entity.Event;
 import com.backend.entity.RefCode;
+import com.backend.entity.Transport;
 import com.backend.enums.UserRole;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -50,4 +51,8 @@ public class Response {
     private Map<String, Map<String,String>> refCodeMap1;
 
     private List<String> refCodeList;
+
+    private Transport transport;
+
+    private Long id;
 }
