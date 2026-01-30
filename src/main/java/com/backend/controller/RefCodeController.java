@@ -31,7 +31,9 @@ public class RefCodeController {
         if(refCode!=null && refCode.getId()==null && refCode.getRefCode()!=null) {
             RefCode dbRefCode = refcodeService.findByRefCode(refCode.getRefCode());
             if(dbRefCode!=null){
-                Response res = Response.builder().status(200).message("RefCode Already exist.").build();
+                Response res = Response.builder()
+                        .status(200)
+                        .message("RefCode Already exist.").build();
                 return ResponseEntity.ok(res);
             }
         }
